@@ -3,12 +3,8 @@
 import { FunctionComponent } from "react";
 import { useCount } from "../hooks/useCount";
 import { FilmInfo } from './FilmInfo';
+import { Props } from "@/app/page";
 
-export interface Props {
-  title: string;
-  genre: "comedy" | "horror";
-  seasonCount: number;
-}
 
 export const FilmDetails: FunctionComponent<Props> = ({
   title,

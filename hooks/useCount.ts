@@ -10,10 +10,6 @@ export function useCount(initialValue: number) {
   const increment = useCallback(() => {
     setCount((prevcount) => prevcount + 1);
   }, []);
- 
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
 
   return { count, decrement, increment };
 }
