@@ -1,21 +1,24 @@
-import { FunctionComponent, JSXElementConstructor, PromiseLikeOfReactNode, ReactElement, ReactNode, ReactPortal } from "react";
-import { Props, Revs } from "@/app/page";
+import { FunctionComponent } from "react";
 
+type Rev = { id: number, author: string; text: string; rating: string };
 
-export const Reviews = (reviews: any[]) => {
+interface RevsProps {
+  reviews: Array<Rev>;
+}
+
+export const Reviews: FunctionComponent<RevsProps> = ({ reviews }) => {
   console.log(reviews);
   return (
-    <>
+    <div>
       {
-        reviews.map((review: { author: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; text: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; rating: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; }) => {
-          <div>
-            <span>Bla</span>
+        !!reviews.length && reviews.map(review => (
+          <div key={review.id}>
             <span>{review.author}</span>
             <span>{review.text}</span>
             <span>{review.rating}</span>
           </div>
-        })
+        ))
       }
-    </>
-  );
+    </div>
+  )
 };
