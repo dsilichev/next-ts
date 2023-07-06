@@ -1,6 +1,7 @@
 import React from "react";
 import { FilmDetails } from "../../components/FilmDetails";
 import { Reviews } from "../../components/Reviews";
+import { NewReviewForm } from "../../components/NewReviewForm";
 
 export interface Rev {
   id: number;
@@ -40,6 +41,7 @@ export default function Home() {
       />
       <Reviews reviews={filmDetails.reviews} />
       {/* <Recomendations /> */}
+      <NewReviewForm />
       <footer />
     </div>
   );

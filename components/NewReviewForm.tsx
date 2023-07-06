@@ -1,13 +1,15 @@
+"use client";
+
 import React, { useReducer } from "react";
 
 export const NewReviewForm = () => {
   type Reducer<State, Action> = (state: State, action: Action) => State;
-  type State = { name: string; text: string; rating: number };
+  type State = { name: string; text: string; rating: string };
 
   const initialState: State = {
     name: "Tim",
     text: "Text",
-    rating: 10,
+    rating: "10",
   };
 
   enum FORM_ACTIONS {
@@ -18,7 +20,7 @@ export const NewReviewForm = () => {
 
   type Action = {
     type: FORM_ACTIONS;
-    payload: {name?: string, text?: string, rating?: string }
+    payload: Partial<State>,
   }
 
   // const setNameAction: Action = {
@@ -29,7 +31,7 @@ export const NewReviewForm = () => {
   const reducer = (state: State, action: Action): State => {
     switch (action?.type) {
       case "setName":
-        return { name: action.payload.name, text: "", rating: 0 };
+        return { name: "" || action.payload.name, text: "", rating: 0 };
       case "setText":
         return { ...state, text: action.payload.text };
       case "setRating":
